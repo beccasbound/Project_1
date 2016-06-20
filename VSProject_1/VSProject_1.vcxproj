@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Assignment_Book.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Project_1_Main.cpp" />
     <ClCompile Include="StringTokenizer.cpp" />
@@ -153,7 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assignment.h" />
+    <ClInclude Include="Assignment_Book.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="Ordered_List.h" />
     <ClInclude Include="StringTokenizer.h" />
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>
