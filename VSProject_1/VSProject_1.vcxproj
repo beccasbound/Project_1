@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Assignment.cpp" />
     <ClCompile Include="Assignment_Book.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Project_1_Main.cpp" />
