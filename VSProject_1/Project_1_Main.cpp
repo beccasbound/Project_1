@@ -3,6 +3,8 @@
 #include "Date.h"
 #include "StringTokenizer.h"
 #include "UserInterface.h"
+#include"Assignment.h"
+#include<fstream>
 
 using namespace std;
 
@@ -15,7 +17,16 @@ int main() {
     menu.main();
     */
 
-	UserInterface menu;
+	/*UserInterface menu;
 	menu.main();
-
+*/
+	Assignment h;
+	ifstream fin;
+	ofstream fout;
+	
+	fin.open("tester.txt");
+	fout.open("output.txt");
+	fin >> h;
+	fout << h;
+	
 }

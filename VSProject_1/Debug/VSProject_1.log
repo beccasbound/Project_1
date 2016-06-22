@@ -1,7 +1,6 @@
-﻿  UserInterface.cpp
-  StringTokenizer.cpp
-  Project_1_Main.cpp
-  Date.cpp
+﻿  Assignment.cpp
+c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment.h(27): warning C4715: 'ToString': not all control paths return a value
+c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value
   Assignment_Book.cpp
 c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(11): error C2143: syntax error: missing ';' before '<'
   c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(49): note: see reference to class template instantiation 'Ordered_List<Item_Type>' being compiled
@@ -22,10 +21,3 @@ c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(15
 c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(19): error C3867: 'Assignment::get_status': non-standard syntax; use '&' to create a pointer to member
 c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(19): error C2446: '==': no conversion from 'const char *' to 'status (__thiscall Assignment::* )(void) const'
   c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(19): note: There is no context in which this conversion is possible
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(112): error C2664: 'void Assignment::set_status(const status &)': cannot convert argument 1 from 'const char [5]' to 'const status &'
-  c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(112): note: Reason: cannot convert from 'const char [5]' to 'const status'
-  c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(112): note: There is no context in which this conversion is possible
-  Assignment.cpp
-  Generating Code...
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value

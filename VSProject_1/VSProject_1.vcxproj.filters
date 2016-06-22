@@ -54,4 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="tester.txt">
+      <Filter>Header Files</Filter>
+    </Text>
+    <Text Include="output.txt">
+      <Filter>Header Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

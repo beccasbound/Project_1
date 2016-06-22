@@ -3,16 +3,29 @@
 #include"Date.h"
 #include <string>
 #include <iostream>
-
+#include<algorithm>
 #include"StringTokenizer.h"
 
 using namespace std;
 
+/* Create a status - an enum type that tells us whether the assignment is assigned, completed, or late */
 enum status {
+	
 	assigned,
 	completed,
 	late
 };
+//Function to convert enum type variable in to the string. It accepts enum type an return string
+inline const char* ToString(status status_type)
+{
+	switch (status_type)
+	{
+	case assigned: return "assigned";
+	case completed: return "completed";
+	case late: return "late";
+	}
+}
+
 /** Construct a new Assignment
 @param due_date
 @param description
@@ -30,20 +43,20 @@ public:
 	Assignment(const Date& the_due_date, const string& the_description,
 		const Date& the_assigned_date, const status& the_status);
 
-	// Default assignment
+	// Default constructor for the assigment class
 	Assignment();
-
-	// Getters
+	// Getters for the due date, description, assigned date and status
 	Date get_due_date() const;
 	string get_description()const;
 	Date get_assigned_date()const;
 	status get_status() const;
 
-	//setters
+	//setters for the due date, description, assigned date and status
 	void set_due_date(const Date& new_due_date);
 	void set_description(const string& new_description);
 	void set_assigned_date(const Date& new_assigned_date);
 	void set_status(const status& new_status);
+	
 
 	//overlodaing<< opertaror to output the data to the the file
 	friend ostream& operator <<(ostream& out, const Assignment& item);
@@ -54,7 +67,7 @@ public:
 	bool operator< (const Assignment& rhs);
 	bool operator> (const Assignment& rhs);
 	bool operator==(const Assignment& rhs);
-
+	
 };
 
 

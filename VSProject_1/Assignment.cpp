@@ -1,27 +1,6 @@
 #include"Assignment.h"
 #include <type_traits>
 
-// functions to help read in enum type 
-template<typename Enum>
-class EnumReader
-{
-	Enum& e_;
-
-	friend std::istream& operator >> (std::istream& in, const EnumReader& val) {
-		typename std::underlying_type<Enum>::type asInt;
-		if (in >> asInt) val.e_ = static_cast<Enum>(asInt);
-		return in;
-	}
-public:
-	EnumReader(Enum& e) : e_(e) {}
-};
-
-template<typename Enum>
-EnumReader<Enum> read_enum(Enum& e)
-{
-	return EnumReader<Enum>(e);
-}
-
 Assignment::Assignment(const Date& the_due_date, const string& the_description,
 	const Date& the_assigned_date, const status& the_status) : due_date(the_due_date),
 	description(the_description), assigned_date(the_assigned_date), assignment_status(the_status) {}
@@ -29,7 +8,8 @@ Assignment::Assignment(const Date& the_due_date, const string& the_description,
 // Default constructor for assignment class
 Assignment::Assignment() : due_date(""), description(""), assigned_date(""), assignment_status(assigned) {}
 
-// Getters
+
+// Getters for the due date, description, assigned date and status
 Date Assignment::get_due_date() const
 {
 	return due_date;
@@ -46,7 +26,8 @@ status Assignment::get_status() const
 {
 	return assignment_status;
 }
-//setters
+
+//setters for the due date, description, assigned date and status
 void Assignment::set_due_date(const Date& new_due_date)
 {
 	due_date = new_due_date;
@@ -64,51 +45,55 @@ void Assignment::set_status(const status& new_status)
 	assignment_status = new_status;
 }
 
-// still working one those
+
+// overloaded <<(output) operator which will allow to output data in to the file
 ostream& operator << (ostream& out, const Assignment& item)
 {
-
-	out << item.due_date.toString() << ", " << item.description << ", " << item.assigned_date.toString() << ", " << item.assignment_status << endl;;
+	string temp_assignment_status;
+	temp_assignment_status=ToString(item.assignment_status);
+	out << item.due_date.toString() << ", " << item.description << ", " << item.assigned_date.toString() << ", " << temp_assignment_status << endl;
 	return out;
 }
 
-// still working one those will make couple changes to make them work correctly
+// overloaded >>(input) operator which will allow to read in data
 istream& operator >> (istream& in, Assignment& item)
 {
-
+	Date h;
+	string data;
 	if (in.good())
 	{
-		string data;
-
 		while (getline(in, data))
-
 		{
-			string temp_status;
+			// string tokenizer function to devide data by comma
 			String_Tokenizer st(data, ",");
-			item.due_date = st.next_token();
-			item.description = st.next_token();
-			item.assigned_date = st.next_token();
-			temp_status = st.next_token();
-			if (temp_status == " assigned")
+			if (st.has_more_tokens())
 			{
-				item.assignment_status = assigned;
+				string temp_status;
+				item.due_date = Date(st.next_token(),US);
+				item.description = st.next_token();
+				item.description.erase(remove_if(item.description.begin(), item.description.end(), isspace), item.description.end());
+				item.assigned_date = Date(st.next_token());
+				temp_status = st.next_token();
+				temp_status.erase(remove_if(temp_status.begin(), temp_status.end(), isspace), temp_status.end());
+				if (temp_status == "assigned")
+				{
+					item.assignment_status = assigned;
+				}
+				else if (temp_status == "completed")
+				{
+					item.assignment_status = completed;
+				}
+				else if (temp_status == "late")
+				{
+					item.assignment_status = late;
+				}
 			}
-			else if (temp_status == " completed")
-			{
-				item.assignment_status = completed;
-			}
-			else if (temp_status == " late")
-			{
-				item.assignment_status = late;
-			}
-			in >> item.due_date >> item.description >> item.assigned_date >> read_enum(item.assignment_status);
 		}
 	}
-
 	return in;
 }
 
-//overloaded less than operator
+//overloaded less than operator to compare assigned date
 bool Assignment::operator< (const Assignment& rhs)
 {
 	if (assigned_date < rhs.assigned_date)
@@ -120,7 +105,7 @@ bool Assignment::operator< (const Assignment& rhs)
 		return false;
 	}
 }
-//overloaded > operator
+//overloaded > operator to compare assigned date
 bool Assignment::operator> (const Assignment& rhs)
 {
 	if (assigned_date > rhs.assigned_date)
@@ -133,12 +118,10 @@ bool Assignment::operator> (const Assignment& rhs)
 	}
 }
 
-// overloading = operator, we might make some changes if needed.
+// overloading == operator to check if assignments are identical
 bool Assignment::operator==(const Assignment& rhs)
 {
 	return assigned_date == rhs.assigned_date && description == rhs.description && due_date == rhs.due_date &&
 		assignment_status == rhs.assignment_status;
 }
-
-
 
