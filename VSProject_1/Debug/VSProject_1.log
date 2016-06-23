@@ -1,11 +1,8 @@
-﻿  UserInterface.cpp
-  StringTokenizer.cpp
-  Project_1_Main.cpp
-  Date.cpp
-  Assignment.cpp
+﻿  Project_1_Main.cpp
   Generating Code...
-c:\users\rebec\desktop\courses\1_summer 2016\data structures\projects\project_1\vsproject_1\assignment.h(27): warning C4715: 'ToString': not all control paths return a value
-c:\users\rebec\desktop\courses\1_summer 2016\data structures\projects\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value
-c:\users\rebec\desktop\courses\1_summer 2016\data structures\projects\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value
+c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value
+  Compiling...
+  UserInterface.cpp
+  Generating Code...
   Assignment_Book.cpp
-  VSProject_1.vcxproj -> C:\Users\rebec\Desktop\Courses\1_Summer 2016\Data Structures\Projects\Project_1\VSProject_1\Debug\VSProject_1.exe
+  VSProject_1.vcxproj -> C:\Users\Gulnoza\Documents\UMKC2016\Project_1\VSProject_1\Debug\VSProject_1.exe

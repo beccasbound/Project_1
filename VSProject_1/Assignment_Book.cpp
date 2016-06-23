@@ -68,7 +68,9 @@ list<Assignment>::iterator Assignment_Book::find_assignment(Date userEntered_ass
             return iter;
     }
    // cout << "There is no assignment with that assigned date in the assignment book." << endl;
-    return completed_list.end();
+	found = false;
+	return completed_list.end();
+		
 }
 
 /* Adds an assignment to assigned_list. Inserts in order of due date. */

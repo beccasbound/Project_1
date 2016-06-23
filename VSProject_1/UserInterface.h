@@ -3,6 +3,7 @@
 #include "Date.h"
 #include "StringTokenizer.h"
 #include "Assignment_Book.h"
+#include"Assignment.h"
 #include <string>
 
 using namespace std;
@@ -19,8 +20,8 @@ public:
 		cout << "==================================MAIN MENU===================================" << endl // We dont have to use this exact wording. 
 			<< "Enter A to add an assignment: " << endl
 			<< "Enter S to search for an assigment: " << endl
-			<< "Enter C to display list of completed assignments: " << endl
-			<< "Enter D to display list of uncompleted assignments: " << endl
+			<< "Enter C to display list of assignments: " << endl
+			//<< "Enter D to display list of uncompleted assignments: " << endl
 			<< "Enter E to edit assignment: " << endl
 			<< "Enter Q to quit: " << endl << endl;
 		cin >> input;
@@ -32,24 +33,42 @@ public:
 			add();
 			mainOrQuit();
 			break;
+
 		case 'S':
-			cout << "Search completed" << endl;
+			cout << "Enter assigned date:" << endl;
+			
+			cin >> date;
+			search(date);
 			mainOrQuit();
 			break;
-		case 'C':
+
+		/*case 'C':
 			cout << "Display complete" << endl;
+			display_list_of_assignments();
 			mainOrQuit();
-			break;
+			break;*/
+
 		case'D':
+			/*cout << "Display complete" << endl;
+			mainOrQuit();
+			break;*/
 			cout << "Display complete" << endl;
+			display_list_of_assignments();
 			mainOrQuit();
 			break;
+
 		case 'E':
+		//	cout << "Do you w"
+				
 			cout << "Edit complete" << endl;
+
+
 			mainOrQuit();
 			break;
+
 		case'Q':
 			break;
+
 		default:
 			cout << "Invalid input. Please try again" << endl;
 			main();
@@ -79,6 +98,8 @@ public:
 	}
 	void add() { // this is the function I had trouble with we can change the way the user inputs the date after we figure out parseDate.
 		//string assignmentName;
+
+		// do error checking
 		string description;
 		string currentString = "02/02/2016";
 		//int month;
@@ -131,8 +152,30 @@ public:
         my_assignments.display_all();
 
 	}
+	// display list of assignments completed and assigned
+	void display_list_of_assignments()
+	{
+		my_assignments.display_all();
+	}
+
+	void search (Date the_date)
+	{
+		my_assignments.SetFound(true);
+		list<Assignment>::iterator iter = my_assignments.find_assignment(the_date);
+		cout << "Would you like to edit this assignment" << endl;
+
+
+
+		if (my_assignments.GetFound() == false)
+			cout << "Date not found" << endl;
+		return;
+	
+	}
+
 
     private:
         Assignment_Book my_assignments;
+		Date date;
+		Assignment the_assignment;
 };
 
