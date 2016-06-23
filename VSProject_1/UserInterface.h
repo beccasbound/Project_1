@@ -2,6 +2,7 @@
 #include<iostream>
 #include "Date.h"
 #include "StringTokenizer.h"
+#include "Assignment_Book.h"
 #include <string>
 
 using namespace std;
@@ -9,6 +10,8 @@ using namespace std;
 class UserInterface
 {
 public:
+    UserInterface(Assignment_Book assignments_from_file) { my_assignments = assignments_from_file; }
+
 	// This is just the first draft and I know we are gonna make a lot of changes to this but we had to start somwhere.
 	void main()
 	{
@@ -75,38 +78,61 @@ public:
 		}
 	}
 	void add() { // this is the function I had trouble with we can change the way the user inputs the date after we figure out parseDate.
-		string assignmentName;
+		//string assignmentName;
 		string description;
 		string currentString = "02/02/2016";
-		int month;
-		int day;
-		int year;
+		//int month;
+		//int day;
+		//int year;
+        Date assigned_date, due_date;
+        Assignment new_assignment;
 
 		cin.ignore();
-		cout << "Enter assignment name: ";
-		getline(cin, assignmentName);
+		//cout << "Enter assignment name: ";
+		//getline(cin, assignmentName);
 		cout << "Enter assignment description: ";
 		getline(cin, description);
-		cout << "Enter assigned date: " << endl
-			<< "Enter month: ";
+        cout << "Enter assigned date: " << endl;
+
+		/*	<< "Enter month: ";
 		cin >> month;
 		cout << "Enter day: ";
 		cin >> day;
 		cout << "Enter year: ";
 		cin >> year;
-		Date assignedDate(year, month, day, US);
-		cout << "Assigned date : " << assignedDate.toString();
-		cout << endl << "Enter due date: " << endl
-			<< "Enter month: ";
+		Date assignedDate(year, month, day, US);*/
+
+        cin >> assigned_date;
+
+		cout << "Assigned date : " << assigned_date.toString();
+        cout << endl << "Enter due date: " << endl;
+        /*<< "Enter month: ";
 		cin >> month;
 		cout << "Enter day: ";
 		cin >> day;
 		cout << "Enter year: ";
 		cin >> year;
 
-		Date dueDate(year, month, day, US);
-		cout << "Due date : " << assignedDate.toString()
-			<< endl << "Assignment added";
+		Date dueDate(year, month, day, US);*/
+
+        cin >> due_date;
+
+        cout << "Due date : " << due_date.toString();
+
+        new_assignment.set_assigned_date(assigned_date);
+        new_assignment.set_description(description);
+        new_assignment.set_due_date(due_date);
+        new_assignment.set_status(assigned);
+
+        my_assignments.add_assignment(new_assignment);
+
+        cout << endl << "Assignment added" << endl;
+        cout << new_assignment;
+        my_assignments.display_all();
+
 	}
+
+    private:
+        Assignment_Book my_assignments;
 };
 

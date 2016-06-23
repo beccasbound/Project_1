@@ -1,23 +1,11 @@
-﻿  Assignment.cpp
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment.h(27): warning C4715: 'ToString': not all control paths return a value
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value
+﻿  UserInterface.cpp
+  StringTokenizer.cpp
+  Project_1_Main.cpp
+  Date.cpp
+  Assignment.cpp
+  Generating Code...
+c:\users\rebec\desktop\courses\1_summer 2016\data structures\projects\project_1\vsproject_1\assignment.h(27): warning C4715: 'ToString': not all control paths return a value
+c:\users\rebec\desktop\courses\1_summer 2016\data structures\projects\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value
+c:\users\rebec\desktop\courses\1_summer 2016\data structures\projects\project_1\vsproject_1\date.h(51): warning C4715: 'Date::toString': not all control paths return a value
   Assignment_Book.cpp
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(11): error C2143: syntax error: missing ';' before '<'
-  c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(49): note: see reference to class template instantiation 'Ordered_List<Item_Type>' being compiled
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(11): error C2238: unexpected token(s) preceding ';'
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(16): error C2143: syntax error: missing ';' before '<'
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(16): error C2238: unexpected token(s) preceding ';'
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(40): error C3646: 'begin': unknown override specifier
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(40): error C2059: syntax error: '('
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(40): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(45): error C3646: 'end': unknown override specifier
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(45): error C2059: syntax error: '('
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\ordered_list.h(45): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(15): error C3867: 'Assignment::get_status': non-standard syntax; use '&' to create a pointer to member
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(15): error C2446: '==': no conversion from 'const char *' to 'status (__thiscall Assignment::* )(void) const'
-  c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(15): note: There is no context in which this conversion is possible
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(19): error C3867: 'Assignment::get_status': non-standard syntax; use '&' to create a pointer to member
-c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(19): error C2446: '==': no conversion from 'const char *' to 'status (__thiscall Assignment::* )(void) const'
-  c:\users\gulnoza\documents\umkc2016\project_1\vsproject_1\assignment_book.cpp(19): note: There is no context in which this conversion is possible
+  VSProject_1.vcxproj -> C:\Users\rebec\Desktop\Courses\1_Summer 2016\Data Structures\Projects\Project_1\VSProject_1\Debug\VSProject_1.exe

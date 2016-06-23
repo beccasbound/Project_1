@@ -161,7 +161,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Date.h" />
-    <ClInclude Include="Ordered_List.h" />
+    <ClInclude Include="Ordered_List.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="StringTokenizer.h" />
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>

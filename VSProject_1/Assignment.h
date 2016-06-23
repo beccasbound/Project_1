@@ -1,5 +1,5 @@
 #ifndef ASSIGNMENT_H
-#define ASSIGMENT_H
+#define ASSIGNMENT_H
 #include"Date.h"
 #include <string>
 #include <iostream>

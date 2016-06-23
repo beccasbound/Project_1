@@ -12,11 +12,11 @@ void Assignment_Book::load(string filename) {
     if (!fin)
         throw std::exception("Input file not opened!");
     while (fin >> assignment) {
-        if (assignment.get_status == "assignment") {
+        if (assignment.get_status() == 0) {
             add_assignment(assignment); ///////////////////////////////////////////////
             assignment_count++;
         }
-        else if (assignment.get_status == "complete" || assignment.get_status == "late")/////////////////////////////////////////////////
+        else if (assignment.get_status() == 1 || assignment.get_status() == 2)/////////////////////////////////////////////////
             add_completed_assignment(assignment); 
         else throw std::exception("Assignment has non-standard status code.");
     }
@@ -74,7 +74,12 @@ list<Assignment>::iterator Assignment_Book::find_assignment(Date userEntered_ass
 /* Adds an assignment to assigned_list. Inserts in order of due date. */
 void Assignment_Book::add_assignment(Assignment newAssignment) {
 
+    if (assigned_list.empty())
+        assigned_list.push_front(newAssignment);
+
     list<Assignment>::iterator iter = assigned_list.begin();
+
+   
 
     while (iter != assigned_list.end() && *iter < newAssignment)
         ++iter; //iter points to the first assignment >= newAssignment

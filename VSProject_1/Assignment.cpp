@@ -1,4 +1,4 @@
-#include"Assignment.h"
+ #include"Assignment.h"
 #include <type_traits>
 
 Assignment::Assignment(const Date& the_due_date, const string& the_description,
@@ -62,8 +62,8 @@ istream& operator >> (istream& in, Assignment& item)
 	string data;
 	if (in.good())
 	{
-		while (getline(in, data))
-		{
+        getline(in, data);
+		
 			// string tokenizer function to devide data by comma
 			String_Tokenizer st(data, ",");
 			if (st.has_more_tokens())
@@ -89,7 +89,7 @@ istream& operator >> (istream& in, Assignment& item)
 				}
 			}
 		}
-	}
+	
 	return in;
 }
 
