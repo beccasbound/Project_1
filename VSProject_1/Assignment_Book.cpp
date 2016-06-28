@@ -13,11 +13,11 @@ void Assignment_Book::load(string filename) {
         throw std::exception("Input file not opened!");
     while (fin >> assignment) {
         if (assignment.get_status() == 0) {
-            add_assignment(assignment); 
+            add_assignment(assignment);
             assignment_count++;
         }
         else if (assignment.get_status() == 1 || assignment.get_status() == 2)
-            add_completed_assignment(assignment); 
+            add_completed_assignment(assignment);
         else throw std::exception("Assignment has non-standard status code.");
     }
     if (assignment_count == 0)
@@ -30,17 +30,21 @@ in completed list. */
 void Assignment_Book::display_all() {
     list<Assignment>::iterator iter;
     if (assigned_list.size() > 0 && completed_list.size() > 0) {
-        cout << "Assignments not yet completed: ";
+        cout << endl << "Assignments not yet completed: ";
         if (assigned_list.size() > 0) {
-            cout << endl;
-            for (iter = assigned_list.begin(); iter != assigned_list.end(); iter++)
+            cout << endl << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+            iter = assigned_list.begin();
+            for (int i = 0; i < assigned_list.size(); i++) {
                 cout << *iter;
+                ++iter;
+            }
+
         }
         else
             cout << "None" << endl;
-        cout << "Completed assignments, including late submissions: ";
+        cout << endl << "Completed assignments, including late submissions: ";
         if (completed_list.size() > 0) {
-            cout << endl;
+            cout << endl << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
             for (iter = completed_list.begin(); iter != completed_list.end(); iter++)
                 cout << *iter;
         }
@@ -49,6 +53,7 @@ void Assignment_Book::display_all() {
     }
     else
         cout << "No assignments to display." << endl;
+    cout << endl;
     return;
 }
 
@@ -67,20 +72,16 @@ list<Assignment>::iterator Assignment_Book::find_assignment(Date userEntered_ass
         if (iter->get_assigned_date() == userEntered_assigned_date) // assigned_date and due_date must be dates
             return iter;
     }
-<<<<<<< HEAD
-   // cout << "There is no assignment with that assigned date in the assignment book." << endl;  
+    // cout << "There is no assignment with that assigned date in the assignment book." << endl;  
     found = false;
     return completed_list.end();
-=======
-   // cout << "There is no assignment with that assigned date in the assignment book." << endl;
-	found = false;
-	return completed_list.end();
-		
->>>>>>> b01a7e26891818ebb426823b4ea1a1c84290420d
+    // cout << "There is no assignment with that assigned date in the assignment book." << endl;
+    found = false;
+    return completed_list.end();
 }
 
 /*Assignment Assignment_Book::iter_to_assignment(list<Assignment>::iterator iter) {
-    return *iter;
+return *iter;
 }*/
 
 void Assignment_Book::display_assign(list<Assignment>::iterator iter) {
@@ -93,18 +94,18 @@ void Assignment_Book::add_assignment(Assignment newAssignment) {
 
     if (assigned_list.empty())
         assigned_list.push_front(newAssignment);
+    else {
 
-    list<Assignment>::iterator iter = assigned_list.begin();
+        list<Assignment>::iterator iter = assigned_list.begin();
 
-   
-
-    while (iter != assigned_list.end() && *iter < newAssignment)
-        ++iter; //iter points to the first assignment >= newAssignment
-               //or the end
-    assigned_list.insert(iter, newAssignment);
+        while (iter != assigned_list.end() && *iter < newAssignment)
+            ++iter; //iter points to the first assignment >= newAssignment
+                    //or the end
+        assigned_list.insert(iter, newAssignment);
+    }
 }
 
-/* Adds an assignment to completed_list. Inserts in order of assigned date. 
+/* Adds an assignment to completed_list. Inserts in order of assigned date.
 Intended to be used when loading assignments with status "complete" or "late"
 from text file. */
 void Assignment_Book::add_completed_assignment(Assignment newAssignment) {
@@ -131,7 +132,9 @@ void Assignment_Book::complete_assignment(Date userEntered_assigned_date, Date u
     for (iter = assigned_list.begin(); iter != assigned_list.end(); ++iter) {
         if (iter->get_assigned_date() == userEntered_assigned_date) { // assigned_date and due_date must be dates
             if (userEntered_completion_date > iter->get_due_date())
-                iter->set_status(late); 
+                iter->set_status(late);
+            else
+                iter->set_status(completed);
             add_completed_assignment(*iter);
             assigned_list.erase(iter);
             return;
@@ -146,8 +149,28 @@ for each assignment to the text file originally read from. When complete,
 the contents of the file represent all user changes since most recent load. */
 void Assignment_Book::save(string filename) {
 
-}
+    ofstream fout(filename);
+    list<Assignment>::iterator iter;
 
+    for (iter = assigned_list.begin(); iter != assigned_list.end(); ++iter)
+        fout << *iter;
+
+    for (iter = completed_list.begin(); iter != completed_list.end(); ++iter)
+        fout << *iter;
+
+}
+int Assignment_Book::assignments_late_count()
+{
+	for (list<Assignment>::iterator iter = completed_list.begin(); iter != completed_list.end(); ++iter)
+	{
+		if (iter->get_status == late)
+		{
+			late_count++;
+			return late_count;
+		}
+	}
+
+}
 
 
 

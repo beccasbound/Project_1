@@ -47,9 +47,6 @@
     <ClInclude Include="UserInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ordered_List.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Assignment_Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>

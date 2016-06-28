@@ -28,11 +28,7 @@ private:
     string source_file;
     bool modified;
     int late_count;
-<<<<<<< HEAD
     bool found;
-=======
-	bool found;
->>>>>>> b01a7e26891818ebb426823b4ea1a1c84290420d
 
 public:
 
@@ -41,17 +37,10 @@ public:
     /* getters/setters for modified, late_count */
     bool isModified() { return modified; }
     int GetLate_Count() { return late_count; }
-<<<<<<< HEAD
-    bool GetFound() { return found; }
     void Modify() { modified = true; }
     void SetLate_Count(int num_lates) { late_count = num_lates; }
     void SetFound(bool val) { found = val; }
-=======
 	bool GetFound() { return found; }
-    void Modify() { modified = true; }
-    void SetLate_Count(int num_lates) { late_count = num_lates; }
-	void SetFound(bool val) { found = val; }
->>>>>>> b01a7e26891818ebb426823b4ea1a1c84290420d
 
     /* Opens filename for reading, reads in each line by calling the overloaded
     << operator for the Assignment class. Populates the assigned_list and
@@ -88,6 +77,7 @@ public:
     for each assignment to the text file originally read from. When complete,
     the contents of the file represent all user changes since most recent load. */
     void save(string filename);
+	int assignments_late_count();
 
 };
 
