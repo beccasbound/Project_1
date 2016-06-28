@@ -100,6 +100,7 @@ public:
 	}
 
 
+<<<<<<< HEAD
 
     void display_list_of_assignments() {
         my_assignments.display_all();
@@ -124,6 +125,8 @@ public:
    
     }
 
+=======
+>>>>>>> 477a48c05ea737d96a6585919342b71de9abc251
 	void mainOrQuit() { // this is a function that return the user to the main menu or allows them to quit.
 		char input;
 		cout << endl << "Enter M to return to the main menu or Q to quit" << endl;

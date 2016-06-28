@@ -10,11 +10,11 @@ using namespace std;
 
 /* Create a status - an enum type that tells us whether the assignment is assigned, completed, or late */
 enum status {
-	
 	assigned,
 	completed,
 	late
 };
+
 //Function to convert enum type variable in to the string. It accepts enum type an return string
 inline const char* ToString(status status_type)
 {
@@ -35,16 +35,24 @@ inline const char* ToString(status status_type)
 class Assignment
 {
 private:
+	// Initializing variables 
+	// Due date of the assignment
 	Date due_date;
+	// Description of the assignment
 	string description;
+	// Assignbed date of the assignment
 	Date assigned_date;
+	// Status of the assignment
 	status assignment_status;
 public:
+	//Member functions
+	// Construct an empty Assignments
+	Assignment();
+
+	//Make copy of each variable
 	Assignment(const Date& the_due_date, const string& the_description,
 		const Date& the_assigned_date, const status& the_status);
-
-	// Default constructor for the assigment class
-	Assignment();
+	
 	// Getters for the due date, description, assigned date and status
 	Date get_due_date() const;
 	string get_description()const;
