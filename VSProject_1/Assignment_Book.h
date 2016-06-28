@@ -29,6 +29,7 @@ private:
     string source_file;
     bool modified;
     int late_count;
+    bool found;
 
 public:
 
@@ -37,8 +38,10 @@ public:
     /* getters/setters for modified, late_count */
     bool isModified() { return modified; }
     int GetLate_Count() { return late_count; }
+    bool GetFound() { return found; }
     void Modify() { modified = true; }
     void SetLate_Count(int num_lates) { late_count = num_lates; }
+    void SetFound(bool val) { found = val; }
 
     /* Opens filename for reading, reads in each line by calling the overloaded
     << operator for the Assignment class. Populates the assigned_list and
@@ -53,6 +56,10 @@ public:
     assigned date. Notifies user and returns without making changes if no
     assignment with indicated assigned date exists in assignment book. */
     list<Assignment>::iterator find_assignment(Date userEntered_assigned_date);
+
+   // Assignment iter_to_assignment(list<Assignment>::iterator iter);
+
+    void Assignment_Book::display_assign(list<Assignment>::iterator iter);
 
     /* Adds an assignment to assigned_list. Inserts in order of assigned date. */
     void add_assignment(Assignment newAssignment);

@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include "Date.h"
+#include "Assignment.h"
 #include "StringTokenizer.h"
 #include "Assignment_Book.h"
 #include <string>
@@ -14,13 +15,13 @@ public:
 
 	// This is just the first draft and I know we are gonna make a lot of changes to this but we had to start somwhere.
 	void main()
-	{
+    {
 		char input;
 		cout << "==================================MAIN MENU===================================" << endl // We dont have to use this exact wording. 
 			<< "Enter A to add an assignment: " << endl
 			<< "Enter S to search for an assigment: " << endl
-			<< "Enter C to display list of completed assignments: " << endl
-			<< "Enter D to display list of uncompleted assignments: " << endl
+			//<< "Enter C to display list of completed assignments: " << endl
+			<< "Enter D to display list of assignments: " << endl
 			<< "Enter E to edit assignment: " << endl
 			<< "Enter Q to quit: " << endl << endl;
 		cin >> input;
@@ -33,16 +34,20 @@ public:
 			mainOrQuit();
 			break;
 		case 'S':
-			cout << "Search completed" << endl;
+			cout << "Please enter assigned date--> " << endl;
+            cin >> temp_date;
+            search(temp_date);
 			mainOrQuit();
 			break;
-		case 'C':
+		/*case 'C':
 			cout << "Display complete" << endl;
 			mainOrQuit();
-			break;
+			break;*/
 		case'D':
 			cout << "Display complete" << endl;
+            display_list_of_assignments();
 			mainOrQuit();
+            
 			break;
 		case 'E':
 			cout << "Edit complete" << endl;
@@ -58,7 +63,28 @@ public:
 
 
 
+    void display_list_of_assignments() {
+        my_assignments.display_all();
+    }
+    
+   void search(Date date) {
+       my_assignments.SetFound(true);
+        list<Assignment>::iterator iter = my_assignments.find_assignment(date);
+        if (my_assignments.GetFound() == false) {
+            cout << "Date not found." << endl;
+            return;
+        }      
+        cout << *iter;
 
+        Assignment found_assignment = *iter;
+    
+       // my_assignments.display_assign(iter);
+
+       // Assignment requested_assignment = my_assignments.iter_to_assignment(iter);
+
+       // cout << requested_assignment;
+   
+    }
 
 	void mainOrQuit() { // this is a function that return the user to the main menu or allows them to quit.
 		char input;
@@ -127,12 +153,13 @@ public:
         my_assignments.add_assignment(new_assignment);
 
         cout << endl << "Assignment added" << endl;
-        cout << new_assignment;
+        cout << new_assignment << endl << endl;
         my_assignments.display_all();
 
 	}
 
     private:
         Assignment_Book my_assignments;
+        Date temp_date;
 };
 

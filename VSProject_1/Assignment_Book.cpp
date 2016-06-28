@@ -67,9 +67,19 @@ list<Assignment>::iterator Assignment_Book::find_assignment(Date userEntered_ass
         if (iter->get_assigned_date() == userEntered_assigned_date) // assigned_date and due_date must be dates
             return iter;
     }
-   // cout << "There is no assignment with that assigned date in the assignment book." << endl;
+   // cout << "There is no assignment with that assigned date in the assignment book." << endl;  
+    found = false;
     return completed_list.end();
 }
+
+/*Assignment Assignment_Book::iter_to_assignment(list<Assignment>::iterator iter) {
+    return *iter;
+}*/
+
+void Assignment_Book::display_assign(list<Assignment>::iterator iter) {
+    cout << *iter;
+}
+
 
 /* Adds an assignment to assigned_list. Inserts in order of due date. */
 void Assignment_Book::add_assignment(Assignment newAssignment) {
