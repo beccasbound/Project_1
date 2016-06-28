@@ -30,10 +30,11 @@ public:
 		*this = parseDate(date, format);
 	}
 
+	
 
 	Date(int year, int month, int day, DateFormat format = DateFormat::US) : year(year), month(month), day(day), format(format) {
-		if (!valid_date(year, month, day))
-			throw std::exception(" The date is not valid");
+	//	if (!valid_date(year, month, day))
+	//		throw std::exception(" The date is not valid");
 	}
 
 	void set_format(DateFormat format) {
@@ -89,8 +90,8 @@ public:
 			++index;
 		}
 
-		if (!valid_date(year, month, day))
-			throw std::exception(" The date is not valid");
+		//if (!valid_date(year, month, day))
+		//	throw std::exception(" The date is not valid");
 
 		return Date(year, month, day, format);
 
@@ -117,9 +118,13 @@ public:
 	}
 
 	//checks if this date is valid
-	void check_valid() {
+	bool check_valid() {
 		if (!valid_date(year, month, day))
-			throw std::exception("The date is invalid");
+			return false;
+		else
+			return true;
+			
+			//throw std::exception("The date is invalid");
 	}
 
 	//checks if a date is valid
@@ -297,6 +302,7 @@ public:
 	void setYear(int theYear) { year = theYear; check_valid(); }
 	void setMonth(int theMonth) { month = theMonth; check_valid(); }
 	void setDay(int theDay) { day = theDay; check_valid(); }
+	
 
 
 private:
