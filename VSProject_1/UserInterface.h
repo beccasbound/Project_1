@@ -79,9 +79,6 @@ public:
 	}
 
 
-
-
-
 	void mainOrQuit() { // this is a function that return the user to the main menu or allows them to quit.
 		char input;
 		cout << endl << "Enter M to return to the main menu or Q to quit" << endl;
