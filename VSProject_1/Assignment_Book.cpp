@@ -67,9 +67,16 @@ list<Assignment>::iterator Assignment_Book::find_assignment(Date userEntered_ass
         if (iter->get_assigned_date() == userEntered_assigned_date) // assigned_date and due_date must be dates
             return iter;
     }
+<<<<<<< HEAD
    // cout << "There is no assignment with that assigned date in the assignment book." << endl;  
     found = false;
     return completed_list.end();
+=======
+   // cout << "There is no assignment with that assigned date in the assignment book." << endl;
+	found = false;
+	return completed_list.end();
+		
+>>>>>>> b01a7e26891818ebb426823b4ea1a1c84290420d
 }
 
 /*Assignment Assignment_Book::iter_to_assignment(list<Assignment>::iterator iter) {
