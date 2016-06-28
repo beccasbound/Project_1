@@ -1,5 +1,6 @@
  #include"Assignment.h"
 #include <type_traits>
+#include <iomanip>
 
 // Make copy of each variable
 Assignment::Assignment(const Date& the_due_date, const string& the_description,
@@ -52,7 +53,7 @@ ostream& operator << (ostream& out, const Assignment& item)
 {
 	string temp_assignment_status;
 	temp_assignment_status=ToString(item.assignment_status);
-	out << item.due_date.toString() << ", " << item.description << ", " << item.assigned_date.toString() << ", " << temp_assignment_status << endl;
+	out << setw(12)<< item.due_date.toString()<< "," <<  setw(25) <<item.description << "," << setw(15) << item.assigned_date.toString() << "       ," << setw(9)<< temp_assignment_status << ","<<endl;
 	return out;
 }
 
@@ -131,4 +132,3 @@ bool Assignment::operator==(const Assignment& rhs)
 	return assigned_date == rhs.assigned_date && description == rhs.description && due_date == rhs.due_date &&
 		assignment_status == rhs.assignment_status;
 }
-

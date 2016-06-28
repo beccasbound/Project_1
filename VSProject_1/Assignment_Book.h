@@ -70,8 +70,7 @@ public:
     in completed_assignments, then deletes it from assigned_list. */
     void complete_assignment(Date userEntered_assigned_date, Date userEntered_completion_date);
 
-    /* Removes assignment from list. Deletes associated dynamic data. */
-    void remove_assignment(Assignment to_delete);
+	void edit_assignment(Date the_date);
 
     /* Iterates through assigned_list and completed_list, outputting info
     for each assignment to the text file originally read from. When complete,
