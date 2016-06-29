@@ -87,9 +87,6 @@ list<Assignment>::iterator Assignment_Book::find_assignment(Date userEntered_ass
     return completed_list.end();
 }
 
-/*Assignment Assignment_Book::iter_to_assignment(list<Assignment>::iterator iter) {
-return *iter;
-}*/
 
 void Assignment_Book::display_assign(list<Assignment>::iterator iter) {
     cout << *iter;
@@ -133,12 +130,7 @@ void Assignment_Book::complete_assignment(Date userEntered_assigned_date, Date u
         cout << "The completion date cannot be earlier than the assigned date." << endl;
         return;
     }
-	/*
-    list<Assignment>::iterator iter;
-
-    for (iter = assigned_list.begin(); iter != assigned_list.end(); ++iter) {
-        if (iter->get_assigned_date() == userEntered_assigned_date) { // assigned_date and due_date must be dates*/
-
+	
 	SetFound(true);
 	list<Assignment>::iterator iter = find_assignment(userEntered_assigned_date);
 	if (GetFound() == false) {
@@ -157,10 +149,6 @@ void Assignment_Book::complete_assignment(Date userEntered_assigned_date, Date u
 
             return;
         }
-   /* }
-    cout << "No assignment with that assigned date was found." << endl;
-    return;
-}*/
 
 /* Iterates through assigned_list and completed_list, outputting info
 for each assignment to the text file originally read from. When complete,
@@ -200,8 +188,6 @@ void Assignment_Book::edit_assignment(Date the_date) {
 	
 	Assignment found_assignment = *iter;
 	cout << found_assignment << endl;
-
-	
 
 	while (is_valid==false) {
 	cout << "Enter new due date: ";

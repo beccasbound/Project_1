@@ -15,20 +15,6 @@ int main() {
     my_assignments.load("tester.txt");
     UserInterface menu(my_assignments);
     menu.main();
-    
-
-	/*UserInterface menu;
-	menu.main();
-*/
-/*	Assignment h;
-	ifstream fin;
-	ofstream fout;
-	
-	fin.open("tester.txt");
-	fout.open("output.txt");
-	fin >> h;
-	fout << h;*/
-
     system("pause");
 	
 }

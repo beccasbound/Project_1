@@ -153,7 +153,6 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Project_1_Main.cpp" />
     <ClCompile Include="StringTokenizer.cpp" />
-    <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assignment.h" />
