@@ -56,8 +56,6 @@ public:
     assignment with indicated assigned date exists in assignment book. */
     list<Assignment>::iterator find_assignment(Date userEntered_assigned_date);
 
-   // Assignment iter_to_assignment(list<Assignment>::iterator iter);
-
     void Assignment_Book::display_assign(list<Assignment>::iterator iter);
 
     /* Adds an assignment to assigned_list. Inserts in order of assigned date. */

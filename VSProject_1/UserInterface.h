@@ -11,14 +11,14 @@ using namespace std;
 class UserInterface
 {
 public:
+	// constructor
 	UserInterface(Assignment_Book assignments_from_file) { my_assignments = assignments_from_file; saved=true; }
-
-	// This is just the first draft and I know we are gonna make a lot of changes to this but we had to start somwhere.
+	//main function to display menu options
 	void main()
 	{
 		char input;
 		Date temp_date;
-		cout << "==================================MAIN MENU===================================" << endl // We dont have to use this exact wording. 
+		cout << "==================================MAIN MENU===================================" << endl 
 			<< "Enter A to add an assignment: " << endl
 			<< "Enter F to find for an assigment: " << endl
 			<< "Enter D to display list of assignments: " << endl
@@ -30,12 +30,10 @@ public:
 		cin >> input;
 		input = toupper(input);   // the toupper function ensured that input of non capital letters will still work
 
+		// novegate through the menu options
 		switch (input) {
 		case 'A':
-			
-			
-
-
+			// add assignment to the list of assignments
 			cin.ignore();
 			cout << endl << "Enter assignment description: ";
 			getline(cin, temp_description);
@@ -46,8 +44,6 @@ public:
 			the_assignment.set_assigned_date(temp_date);
 			the_assignment.set_due_date(date);
 			the_assignment.set_description(temp_description);
-			
-
 			my_assignments.add_assignment(the_assignment);
 			cout << "Assignment added." << endl;
 			saved = false;
@@ -55,18 +51,15 @@ public:
 			break;
 
 		case 'F':
+			// find an assignemnt from assignment lists
 			saved = false;
 			cout << "Enter assigned date: (month/day/year)" << endl;
 			cin >> date;
-			//my_assignments.SetFound(true);
-			//list<Assignment>::iterator iter = ;
-			/*if (my_assignments.GetFound() == false) {
-			cout << "Assignment not found" << endl;
-			return;
-			}*/
-			cout << *my_assignments.find_assignment(date) << endl << "Would you like to edit this assignment? Y/N" << endl;
+			cout << *(my_assignments.find_assignment(date)) << endl;
+			cout<< "Would you like to edit this assignment? Y/N" << endl;
 			cin >> input;
 			input = toupper(input);
+			// ask user if he/she wants to edit found assignment
 			switch (input) {
 			case 'Y':
 				my_assignments.edit_assignment(date);
@@ -79,25 +72,24 @@ public:
 				}
 			mainOrQuit();
 			break;
-		case'D':
 
+		case'D':
+			// display all assignments
 			my_assignments.display_all();
 			mainOrQuit();
 			break;
 
 		case 'E':
+			// edit assignment
 			saved = false;
 			cout << "Enter assigned date of assignment you would like to edit: (month/day/year)" << endl;
 			cin >> temp_date;
-
 			my_assignments.edit_assignment(temp_date);
-
-
 			mainOrQuit();
 			break;
 
 		case'C':
-
+			//complete assignment (submit assignment)
 			saved = false;
 			cout << "Enter assigned date of assignment you would like to complete: " << endl;
 			cin >> temp_date;
@@ -115,34 +107,28 @@ public:
 			}
 
 			my_assignments.complete_assignment(temp_date, date);
-
-
-
 			mainOrQuit();
 			break;
 
 		case'L':
-
-
+			// display late assignment count
 			cout << my_assignments.assignments_late_count()
-				<< " Late assignments" << endl;
+				 << " Late assignments" << endl;
 			mainOrQuit();
 			break;
 		case'S':
-
-
+			// save any changes that have been made to assignments list and output it into the text file
 			my_assignments.save("tester.txt");
 			cout << "Save completed.";
 			saved = true;
-
 			mainOrQuit();
 			break;
 
 		case'Q':
+			// quit
 			if (saved == false) {
 				ask_save();
 			}
-			
 			break;
 
 		default:
@@ -151,11 +137,8 @@ public:
 		}
 	}
 
-
-
-
-
-	void mainOrQuit() { // this is a function that return the user to the main menu or allows them to quit.
+	// this is a function that return the user to the main menu or allows user to quit.
+	void mainOrQuit() { 
 		char input;
 		cout << endl << "Enter M to return to the main menu or Q to quit" << endl;
 		cin >> input;
@@ -175,67 +158,9 @@ public:
 			mainOrQuit();
 		}
 	}
-/*	void add() {
-
-
-		string description;
-		Date assigned_date, due_date;
-		Assignment new_assignment;
-
-
-		cin.ignore();
-		cout << endl << "Enter assignment description: ";
-		getline(cin, description);
-		cout << "Enter assigned date: (month/day/year)" << endl;
-		cin >> assigned_date;
-
-		my_assignments.SetFound(true);
-		my_assignments.find_assignment(assigned_date);
-		if (my_assignments.GetFound() == true) {
-			cout << "Assignment with this date already exist.  Please try again " << endl;
-			add();
-		}
-		if (!assigned_date.check_valid())
-		{
-			cout << endl << "Invalid date entered, please try again: " << endl;
-			add();
-		}
-		cout << "Assigned date : " << assigned_date.toString();
-		cout << endl << "Enter due date: (month/day/year)" << endl;
-		cin >> due_date;
-		if (!due_date.check_valid())
-		{
-			cout << endl << "Invalid date entered, please try again: " << endl;
-			add();
-		}
-
-
-		if (assigned_date > due_date)
-		{
-			cout << "assigned date is after due date. Please try again " << endl;
-			add();
-		}
-		cout << "Due date : " << due_date.toString();
-
-		new_assignment.set_assigned_date(assigned_date);
-		new_assignment.set_description(description);
-		new_assignment.set_due_date(due_date);
-		new_assignment.set_status(assigned);
-
-		my_assignments.add_assignment(new_assignment);
-
-
-		cout << "Assignment added" << endl;
-
-		cout << new_assignment;
-
-
-	}
-	*/
-
-
+// prompt user to save changes
 	void ask_save(){
-		cout << "Would you like to save your changes?";
+		cout << "Would you like to save your changes? (Y/N)";
 		cin >> input;
 		input = toupper(input);
 	switch (input) {
@@ -243,6 +168,7 @@ public:
 		my_assignments.save("tester.txt");
 		cout << "Save completed.";
 		saved = true;
+		mainOrQuit();
 		break;
 	case 'N':
 		break;
@@ -250,130 +176,9 @@ public:
 		cout << "Invalid input" << endl;
 		ask_save();
 	}
-		
-	}
-/*	void display_list_of_assignments()
-	{
-		my_assignments.display_all();
-	}
-
-	void search(Date the_date)
-	{
-		char input;
-		my_assignments.SetFound(true);
-		list<Assignment>::iterator iter = my_assignments.find_assignment(the_date);
-		if (my_assignments.GetFound() == false) {
-			cout << "Assignment not found" << endl;
-			return;
-		}
-
-		cout << *iter << endl << "Would you like to edit this assignment? Y/N" << endl;
-		cin >> input;
-		input = toupper(input);
-		switch (input) {
-		case 'Y':
-			edit(the_date);
-			break;
-		case 'N':
-			mainOrQuit();
-			break;
-		default:
-			cout << "Invalid input" << endl;
-			search(the_date);
-		}
-
-	}
-	void edit(Date the_date) {
-		Date new_dueDate;
-		string new_description;
-		my_assignments.SetFound(true);
-		list<Assignment>::iterator iter = my_assignments.find_assignment(the_date);
-		if (my_assignments.GetFound() == false) {
-			cout << "Assignment not found" << endl;
-			return;
-		}
-		Assignment found_assignment = *iter;
-		cout << *iter << endl;
-
-		cout << "Enter new due date: ";
-		cin >> new_dueDate;
-
-		if (!new_dueDate.check_valid())
-		{
-			cout << endl << "Invalid date entered, please try again: " << endl;
-			edit(the_date);
-		}
-		found_assignment.set_due_date(new_dueDate);
-		cout << "Enter new description: ";
-		cin >> new_description;
-		found_assignment.set_description(new_description);
-		*iter = found_assignment;
-		cout << "Changes made" << endl << *iter << endl;
-	}
-
-
-
-
-	void complete(Date the_date)
-	{
-
-
-
-		Date completion_date;
-		my_assignments.SetFound(true);
-		list<Assignment>::iterator iter = my_assignments.find_assignment(the_date);
-		if (my_assignments.GetFound() == false) {
-			cout << "Assignment not found" << endl;
-			return;
-		}
-		Assignment found_assignment = *iter;
-		cout << "Enter date of completion (month / day / year)" << endl;
-		cin >> completion_date;
-
-		if (!completion_date.check_valid()) {
-			cout << "Completion date is not valid. Please try again" << endl;
-			complete(the_date);
-		}
-		if (completion_date < found_assignment.get_assigned_date()) {
-			cout << "Completion date is before assigned date. Please try again" << endl;
-			complete(the_date);
-		}
-		if (completion_date > found_assignment.get_due_date()) {
-			found_assignment.set_status(late);
-		}
-		else {
-			found_assignment.set_status(completed);
-		}
-
-
-		*iter = found_assignment;
-		cout << *iter << endl;
-
-		//my_assignments.complete_assignment()
-		//complete_assignment(Date userEntered_assigned_date, Date userEntered_completion_date)
-	}
-
-
-	void save_or_revert() {
-		char input;
-		cout << "Would you like to save your changes? " << endl;
-		cin >> input;
-		input = toupper(input);
-		switch (input) {
-		case 'Y':
-			edit(the_date);
-			break;
-		case 'N':
-			mainOrQuit();
-			break;
-		default:
-			cout << "Invalid input" << endl;
-			search(the_date);
-
-		}
-	}*/
-
+}
 private:
+	// decalre variable for user interface class
 	Assignment_Book my_assignments;
 	Date date;
 	Assignment the_assignment;

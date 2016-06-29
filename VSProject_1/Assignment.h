@@ -67,7 +67,6 @@ public:
 	void set_assigned_date(const Date& new_assigned_date);
 	void set_status(const status& new_status);
 	
-
 	//overlodaing<< opertaror to output the data to the the file
 	friend ostream& operator <<(ostream& out, const Assignment& item);
 	//overlodaing>> opertaror to read in the data from the file

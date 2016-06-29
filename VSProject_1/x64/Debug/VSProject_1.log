@@ -1,9 +1,6 @@
-﻿Build started 6/28/2016 5:45:11 PM.
-     1>Project "C:\Users\User\Desktop\dataStructures\Project_1\VSProject_1\VSProject_1.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         VSProject_1.vcxproj -> C:\Users\User\Desktop\dataStructures\Project_1\VSProject_1\x64\Debug\VSProject_1.exe
-     1>Done Building Project "C:\Users\User\Desktop\dataStructures\Project_1\VSProject_1\VSProject_1.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.04
+﻿  Project_1_Main.cpp
+  Generating Code...
+  Compiling...
+  UserInterface.cpp
+  Generating Code...
+  VSProject_1.vcxproj -> C:\Users\Gulnoza\Documents\UMKC2016\Project_1\VSProject_1\x64\Debug\VSProject_1.exe

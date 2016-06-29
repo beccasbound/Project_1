@@ -53,7 +53,7 @@ ostream& operator << (ostream& out, const Assignment& item)
 {
 	string temp_assignment_status;
 	temp_assignment_status=ToString(item.assignment_status);
-	out << setw(12)<< item.due_date.toString()<< "," <<  setw(25) <<item.description << "," << setw(15) << item.assigned_date.toString() << "       ," << setw(9)<< temp_assignment_status << ","<<endl;
+	out << setw(12)<< item.due_date.toString()<< "," <<  setw(25) <<item.description << "," << setw(15) << item.assigned_date.toString() << "," << setw(15)<< temp_assignment_status <<endl;
 	return out;
 }
 
